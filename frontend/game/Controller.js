@@ -2,7 +2,13 @@ export default class Controller {
 	constructor(model, view) {
 		this.model = model;
 		this.view = view;
-		
-		this.view.createButton();
+
+		for(let i=0 ; i<this.view.totalBtn ; i++) {
+			this.view["button" + i].addEventListener("click", ()=>{this.detectButtonCase(i)});
+
+		}
+	}
+	detectButtonCase(number) {
+		console.log("detect", number);
 	}
 }

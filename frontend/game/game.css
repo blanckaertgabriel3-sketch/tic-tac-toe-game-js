@@ -8,3 +8,7 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
+#game button:hover {
+	background-color: gray;
+}
