@@ -34,11 +34,11 @@ export default class View {
 		for(let i=0 ; i<this.totalBtn ; i++) {
 			this["button" + i] = document.getElementById(["button" + i]);
 			//textContent Size
-			this["button" + i].style.fontSize = "100px";
+			this["button" + i].style.fontSize = "126.8px";
 		}
 	}
 	printIntoButton(caseNumber) {
-		if(this.somethingInTheCase(caseNumber) == true) {
+		if(this.nothingInTheCase(caseNumber) == true) {
 			if(this.model.player1Turn) {
 				this["button" + caseNumber].textContent = this.model.player1.symbol;
 				this.model.player1Turn = false;
@@ -48,23 +48,27 @@ export default class View {
 				this.model.player1Turn = true;
 	
 			}
-			this.rowWin();
 		}
 	}
-	somethingInTheCase(caseNumber) {
+	nothingInTheCase(caseNumber) {
 		if(this["button" + caseNumber].textContent != "") {
 			return false;
 		}
 		return true;
 		
 	}
-	rowWin() {
-		console.log("array");
+	detectWin() {
+		//add case Sybole into array
+		this.rowArray();
+		this.winCombination();
+	}
+	rowArray() {
+		this.allRowArray = [];
 		let columnIndex;
 		//create array for each row
 		for(let i=0 ; i<this.rowsNb ; i++) {
 			this["rowArray" + i] = [];
-			console.log(this["rowArray" + i]);
+			// console.log(this["rowArray" + i]);
 		}
 		for(let r=0 ; r<this.rowsNb ; r++) {
 			if(r==0) {
@@ -77,8 +81,17 @@ export default class View {
 				this["rowArray" + r].push(this["button" + (i+columnIndex)].textContent);
 	
 			}
-			// console.log("rowIndex", columnIndex);
+			this.allRowArray.push(this["rowArray" + r]);
 		}
 	}
+	winCombination() {
+		console.log("combinaison");
+		for(let i=0 ; i<this.allRowArray[0].length ; i++) {
+			console.log(this.allRowArray[0][i]);
+		}
+		if(this.allRowArray[0][0] == this.allRowArray[0][1] && this.allRowArray[0][0] !=" ") {
+			console.log("=");
+		}
 
+	}
 }

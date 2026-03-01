@@ -4,8 +4,11 @@ export default class Controller {
 		this.view = view;
 
 		for(let i=0 ; i<this.view.totalBtn ; i++) {
-			this.view["button" + i].addEventListener("click", ()=>{this.view.printIntoButton(i)});
-
+			this.view["button" + i].addEventListener("click", ()=>{this.updateGame(i)});
 		}
+	}
+	updateGame(i) {
+		this.view.printIntoButton(i);
+		this.view.detectWin();
 	}
 }
