@@ -4,11 +4,8 @@ export default class Controller {
 		this.view = view;
 
 		for(let i=0 ; i<this.view.totalBtn ; i++) {
-			this.view["button" + i].addEventListener("click", ()=>{this.detectButtonCase(i)});
+			this.view["button" + i].addEventListener("click", ()=>{this.view.printIntoButton(i)});
 
 		}
-	}
-	detectButtonCase(number) {
-		console.log("detect", number);
 	}
 }
