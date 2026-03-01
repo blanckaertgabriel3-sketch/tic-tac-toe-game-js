@@ -2,15 +2,9 @@ body {
 	margin: 0;
 	padding: 0;
 	min-height: 100vh;
-	min-width: 100vh;
+	min-width: 100vw;
 	background-color: #791c07;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-#game {
-	display: grid;
-	border: 5px solid black;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(3, 1fr);
 }
