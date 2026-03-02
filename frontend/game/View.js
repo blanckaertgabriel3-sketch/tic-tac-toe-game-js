@@ -15,6 +15,8 @@ export default class View {
 		this.game.style.gridTemplateColumns = `repeat(${this.columnsNb}, 1fr)`;
 		this.game.style.gridTemplateRows = `repeat(${this.rowsNb}, 1fr)`;
 
+		this.rowComptTrue = 0;
+
 		this.createButton();
 		this.getButton();
 		
@@ -85,13 +87,26 @@ export default class View {
 		}
 	}
 	winCombination() {
-		console.log("combinaison");
-		for(let i=0 ; i<this.allRowArray[0].length ; i++) {
-			console.log(this.allRowArray[0][i]);
+		for(let i=0 ; i<(this.allRowArray[0].length-1) ; i++) {
+			this.comptTrueComparaison(i);
+			// console.log(this.allRowArray[0][i]);
 		}
-		if(this.allRowArray[0][0] == this.allRowArray[0][1] && this.allRowArray[0][0] !=" ") {
-			console.log("=");
-		}
+		
 
+
+	}
+	comparaison(a, b) {
+		if(this.allRowArray[0][a] == this.allRowArray[0][b] && this.allRowArray[0][a] != "") {
+			return true;
+		}
+		return false;
+	}
+	comptTrueComparaison(i) {
+		if(this.comparaison(i, i+1)) {
+			this.rowComptTrue +=1;
+		}
+		if(this.rowComptTrue == this.columnsNb) {
+			console.log("all same in the first row");
+		}
 	}
 }
